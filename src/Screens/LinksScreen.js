@@ -1,10 +1,10 @@
-import { View, Text, SafeAreaView,StyleSheet, Image, ImageBackground, FlatList, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, SafeAreaView,StyleSheet, Image, ImageBackground, FlatList, TouchableOpacity, TextInput,Dimensions } from 'react-native'
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import { Icon } from "@react-native-material/core";
+const win= Dimensions.get('window')
 
 const LinksScreen = (items) => {
-
   const [artic, setArtic] = useState([])
   const [fartic,setFArtic] = useState([])
   const [term,setTerm] = useState("")
@@ -66,13 +66,13 @@ const LinksScreen = (items) => {
 }
 
 const styles = StyleSheet.create({
-  container: {height: 160},
+  container: {height: 160,paddingTop: Platform.OS==='ios'? 0:20},
   container2: {},
   container3: {flex: 0.5, height: 160, margin: 5, backgroundColor: 'lightblue'},
   text: {height: 100, width: '100%',color: 'lightblue', fontSize:25,fontWeight: 'bold',textAlign: 'center',paddingTop: 35, elevation: 2},
-  image: {height: '100%', width: '100%', opacity: 1,resizeMode: 'contain' },
-  image2: {height: '100%',width: '100%', opacity: 1,resizeMode: 'cover', elevation: 3,borderRadius: 10},
-  text2: {fontSize: 15, fontWeight: 'bold', textAlign: 'center'},
+  image: {height: '100%', width: '100%', opacity: 0.8},
+  image2: {height: 160, opacity: 1,resizeMode: 'cover', elevation: 3,borderRadius: 10},
+  text2: {fontSize: 15, fontWeight: 'bold', textAlign: 'center',color:'lightblue'},
   input: {
     backgroundColor: "green", color: 'black', alignSelf: "center", borderWidth: 2,width: 100  }
 })

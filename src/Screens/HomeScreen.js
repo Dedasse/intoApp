@@ -1,4 +1,4 @@
-import {View, Text, Button, StyleSheet, Image, FlatList, SafeAreaView} from 'react-native'
+import {View, Text, Button, StyleSheet, Image, FlatList, SafeAreaView,Platform} from 'react-native'
 
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
@@ -73,6 +73,7 @@ const HomeScreen = ({navigation}) => {
       <View style={styles.container2}>
             <FlatList
               scrollEnabled={true}
+              showsVerticalScrollIndicator={false}
               data={tietoa}
               renderItem={({item}) => <Cards2 title={item} navigation={navigation} />}
               keyExtractor={item => item.id}
@@ -90,7 +91,7 @@ const HomeScreen = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
-  container: {height: '100%', backgroundColor: 'white', paddingTop: 20},
+  container: {height: '100%', backgroundColor: 'white', paddingTop: Platform.OS==='ios'? 0:20},
   title: {height: 150, width: '90%', flexDirection: 'row',color: 'lightblue'},
   container2: {flexDirection: 'row',flexGrow: 1, overflow: 'hidden',flex: 1},
   container3: {flexDirection: 'row',justifyContent: 'space-around',marginTop: 10},

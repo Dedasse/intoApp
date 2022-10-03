@@ -25,7 +25,8 @@ const Cards2 = ({title, navigation}) => {
       <Text>{title.name} <Icon name="chevron-right" size={16} /></Text>
       <FlatList
         horizontal
-          scrollEnabled={true}
+        scrollEnabled={true}
+        showsHorizontalScrollIndicator={false}
           data={classe}
         renderItem={({item}) =>
           <View style={styles.cards2} title={item} >
