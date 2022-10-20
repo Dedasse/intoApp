@@ -11,10 +11,13 @@ const Cards2 = ({title, navigation}) => {
   useEffect(() => {
       axios({
       method: 'get',
-      url: `https://backend1.fly.dev/classe/${title.id}`,
+      url: `https://backend1.fly.dev/article/${title.id}`,
       responseType: 'json'
     })
-      .then(function (response) {
+        .then(function (response) {
+          
+        console.log("12 ",title)
+          
         setClasse(response.data)
       });
   }, [])
@@ -22,22 +25,25 @@ const Cards2 = ({title, navigation}) => {
     
   return (
     <View style={styles.cards}>
+      <TouchableOpacity style={styles.click2} onPress={() => navigation.navigate('Links', classe)}>
       <Text>{title.name} <Icon name="chevron-right" size={16} /></Text>
+      </TouchableOpacity>
       <FlatList
         horizontal
         scrollEnabled={true}
         showsHorizontalScrollIndicator={false}
           data={classe}
         renderItem={({item}) =>
-          <View style={styles.cards2} title={item} >
-            <TouchableOpacity style={styles.click} onPress={() => navigation.navigate('Links',item)}>
-             <Image source={{uri: `https://backend1.fly.dev/public/uploads/${item.picture}`}} style={styles.image} containerStyle={{
+        <View style={styles.cards2} title={item} >
+            
+            <TouchableOpacity style={styles.click} onPress={() => navigation.navigate('Article',item)}>
+             <Image source={{uri: `${item.picture}`}} style={styles.image} containerStyle={{
                 elevation: 2,
               }}/>
-              <Text style={styles.text}>{item.text}</Text>
+              <Text style={styles.text}>{item.title}</Text>
               </TouchableOpacity>
           </View>}
-          keyExtractor={item => item.classe_id} 
+          keyExtractor={item => item.id} 
       />
     </View>
   )

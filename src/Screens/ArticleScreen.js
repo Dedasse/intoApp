@@ -12,11 +12,11 @@ const ArticleScreen = (item) => {
   };
   return (
     <SafeAreaView>
-    <View style={styles.container}>
-          <Text style={styles.text}>{item.route.params.title}</Text>
-          <Button onPress={speak} title={speaka? "KUUNTELE":"Lopeta kuuntelu" } />
-    </View>
-    <Image style={styles.image} source={{uri: `https://backend1.fly.dev/public/uploads/${item.route.params.picture}`}} />
+    <ScrollView style={styles.container}>
+          <Text style={styles.text}>{item.route.params.itext}</Text>
+    </ScrollView>
+          <Button onPress={()=>speak} title={speaka? "KUUNTELE":"Lopeta kuuntelu" } />
+    <Image style={styles.image} source={{uri: `${item.route.params.picture}`}} />
     <ScrollView style={styles.container2}>
           <Text style={styles.text2}>{item.route.params.ltext}</Text>
         
@@ -28,10 +28,10 @@ const ArticleScreen = (item) => {
   )
 }
 const styles = StyleSheet.create({
-  container: {height: 160,paddingTop: Platform.OS==='ios'? 0:20},
+  container: {height: 130,paddingTop: Platform.OS==='ios'? 0:0},
   container2: {height: '50%'},
   container3: {flex: 0.5, height: 160, margin: 5,justifyContent: 'center',alignContent:'center'},
-  text: {height: 100, width: '100%',color: 'lightblue', fontSize:25,fontWeight: 'bold',textAlign: 'center',paddingTop: 35},
+  text: { width: '100%',color: 'lightblue', fontSize:15,fontWeight: 'bold',textAlign: 'center',paddingTop: 35},
   image: {height: 150, width: 150, marginVertical:20, alignSelf:'center'},
   image2: {height: '100%',width: '100%', opacity: .8},
   text2: {width: '90%', fontSize: 15, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center'},
